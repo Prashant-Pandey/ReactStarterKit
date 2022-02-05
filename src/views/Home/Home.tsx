@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../images/logo.svg';
 import { Counter } from '../../components/counter/Counter';
-import './Home.css';
+import './Home.scss';
 import { Link } from 'react-router-dom';
 
 function Home(props: any) {
