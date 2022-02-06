@@ -1,0 +1,19 @@
+#app-login-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+
+    .app-contact-form {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .MuiTextField-root {
+            padding: 16px 0;
+            min-width: 400px;
+            max-width: 500px;
+        }
+    }
+}

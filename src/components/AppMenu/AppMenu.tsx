@@ -1,16 +1,8 @@
-import {
-  Avatar,
-  Divider,
-  ListItemIcon,
-  Menu,
-  MenuItem,
-  Tooltip,
-  Typography,
-} from "@material-ui/core";
-import "./AppMenu.scss"
-import { PersonAdd, Settings } from "@material-ui/icons";
+import { Avatar, Menu, MenuItem, Typography } from "@material-ui/core";
+import "./AppMenu.scss";
 import * as React from "react";
 import { PrimaryIconButton } from "../AtomComponents";
+import { Link } from "react-router-dom";
 
 export default function AppMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -24,20 +16,24 @@ export default function AppMenu() {
   return (
     <React.Fragment>
       <div className="app-menu">
-        <Typography style={{ minWidth: 100 }}>Contact</Typography>
-        <Typography style={{ minWidth: 100 }}>Profile</Typography>
-        <Tooltip title="Account settings">
-          <PrimaryIconButton
-            onClick={handleClick}
-            size="small"
-            style={{ marginLeft: 2 }}
-            aria-controls={open ? "account-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-          >
-            <Avatar style={{ width: 32, height: 32 }}>M</Avatar>
-          </PrimaryIconButton>
-        </Tooltip>
+        <Typography>
+          <Link to="/">Home</Link>
+        </Typography>
+        <Typography>
+          <Link to="/contact">Contact</Link>
+        </Typography>
+        <Typography>
+          <Link to="/login">Login</Link>
+        </Typography>
+        <PrimaryIconButton
+          onClick={handleClick}
+          size="small"
+          aria-controls={open ? "account-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+        >
+          <Avatar>M</Avatar>
+        </PrimaryIconButton>
       </div>
       <Menu
         anchorEl={anchorEl}
@@ -45,57 +41,15 @@ export default function AppMenu() {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          style: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            marginTop: 1.5,
-            // '& .MuiAvatar-root': {
-            //   width: 32,
-            //   height: 32,
-            //   ml: -0.5,
-            //   mr: 1,
-            // },
-            // '&:before': {
-            //   content: '""',
-            //   display: 'block',
-            //   position: 'absolute',
-            //   top: 0,
-            //   right: 14,
-            //   width: 10,
-            //   height: 10,
-            //   bgcolor: 'background.paper',
-            //   transform: 'translateY(-50%) rotate(45deg)',
-            //   zIndex: 0,
-            // },
-          },
-        }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar /> Profile
+          <Avatar />
+          <Link to="/profile">Profile</Link>
         </MenuItem>
         <MenuItem>
-          <Avatar /> My account
-        </MenuItem>
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>{/* <Logout fontSize="small" /> */}</ListItemIcon>
-          Logout
+          <Link to="/logout">Logout</Link>
         </MenuItem>
       </Menu>
     </React.Fragment>

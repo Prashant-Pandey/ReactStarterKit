@@ -1,0 +1,16 @@
+#app-contact-form-page {
+    display: flex;
+    justify-content: center;
+    .app-contact-form{
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        min-width: 250px;
+        .MuiTextField-root{
+            margin: 8px 0;
+        }
+        .MuiTextField-root:first-child{
+            margin: 16px 0 8px 0;
+        }
+    }
+}

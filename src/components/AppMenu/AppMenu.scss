@@ -1,4 +1,4 @@
-.app-menu{
+.app-menu {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -7,4 +7,12 @@
     position: sticky;
     top: 0;
     background-color: rgba(99, 99, 99, 0.356);
+
+    .MuiTypography-root {
+        min-width: 100px;
+    }
+}
+
+#account-menu .MuiMenuItem-root a{
+    padding: 0 8px;
 }

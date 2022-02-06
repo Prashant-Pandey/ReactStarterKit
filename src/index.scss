@@ -11,3 +11,423 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+// Global styles
+:root{
+
+  --px_color_primary: 82, 163, 255;
+  --px_color_secondary: 255, 244, 146;
+  // link color
+  --px_color_link: 80, 161, 255;
+  --px_color_link_active: 80, 161, 255;
+  --px_color_link_visited: 80, 161, 255;
+  --px_color_link_hover: 80, 161, 255;
+  // text color
+  --px_color_text_primary: 33, 33, 33;
+  --px_color_text_secondary: 33, 33, 33;
+  --px_color_text_muted: 33, 33, 33;
+  --px_color_text_variant: 33, 33, 33;
+  --px_color_text_on_primary: 255, 255, 255;
+  --px_color_text_on_secondary: 33, 33, 33;
+  --px_color_text_on_snackbar: 255, 255, 255;
+  --px_color_text_on_badge: 255, 255, 255;
+  // background colors
+  --px_color_background: 255, 255, 255;
+  --px_color_surface: 255, 255, 255;
+  // feedback colors
+  --px_color_error: 211, 47, 47;
+  --px_color_error_input: 213, 8, 8;
+  --px_color_error_text: 213, 8, 8;
+  --px_color_warning: 245, 124, 0;
+  --px_color_success: 76, 175, 80;
+  --px_color_info: 32, 32, 32;
+  // border colors
+  --px_color_border: 211, 211, 211;
+  --px_color_border_light: 229, 229, 229;
+  // badge colors
+  --px_color_badge_1: 219, 162, 0;
+  --px_color_badge_1b: 219, 162, 0;
+  --px_color_badge_2: 90, 139, 48;
+  --px_color_badge_2b: 90, 139, 48;
+  --px_color_badge_3: 47, 80, 172;
+  --px_color_badge_3b: 47, 80, 172;
+  --px_color_badge_4: 138, 58, 229;
+  --px_color_badge_5: 210, 30, 169;
+  --px_color_badge_6: 129, 108, 108;
+  // font
+  --px_font_title: 'helvetica';
+  --px_font_body: 'Roboto';
+  // logo dimensions
+  --px_topLogoWidth: 200px;
+  --px_topLogoHeight: 25px;
+  // alpha values
+  --px_alpha_lighter: 0.03;
+  --px_alpha_light: 0.1;
+  --px_alpha_muted: 0.33;
+  --px_alpha_medium: 0.4;
+  --px_alpha_darker: 0.63;
+
+}
+
+
+
+.MuiTabs-root {
+  .MuiTab-root.MuiTab-textColorSecondary {
+    color: RGBA(var(--px_color_text_secondary), var(--px_alpha_darker));
+
+    &.Mui-selected {
+      color: RGB(var(--px_color_text_primary));
+    }
+  }
+}
+
+.MuiChip-root {
+  padding: 8px !important;
+
+  &.MuiChip-outlinedPrimary {
+    color: RGB(var(--px_color_primary));
+    border-color: RGB(var(--px_color_primary));
+
+    .MuiSvgIcon-root {
+      color: RGB(var(--px_color_primary));
+    }
+  }
+
+  .MuiChip-label {
+    font-size: 14px;
+  }
+}
+
+.MuiDropzoneArea-root {
+
+  &,
+  .MuiDropzoneArea-icon {
+    color: RGB(var(--px_color_primary));
+    border-color: RGB(var(--px_color_primary));
+  }
+
+  border: 1px dashed !important;
+
+  &.Mui-error {
+
+    &,
+    .MuiDropzoneArea-icon {
+      color: RGB(var(--px_color_error));
+      border-color: RGB(var(--px_color_error));
+    }
+  }
+
+  .MuiDropzonePreviewList-image,
+  .MuiDropzonePreviewList-removeButton {
+    color: RGB(var(--px_color_primary));
+    background-color: RGB(var(--px_color_background));
+  }
+
+  .MuiDropzonePreviewList-removeButton:hover {
+    color: RGB(var(--px_color_text_on_primary));
+    background-color: RGB(var(--px_color_primary));
+  }
+}
+
+.MuiButton-root {
+  .MuiButton-label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &.MuiButton-textPrimary {
+    color: RGB(var(--px_color_primary));
+  }
+
+  &.MuiButtonBase-root.Mui-disabled {
+    color: RGB(var(--px_color_text_muted));
+  }
+}
+
+.MuiSwitch-root {
+  .MuiSwitch-thumb {
+    color: RGB(var(--px_color_background));
+  }
+
+  .MuiSwitch-track {
+    background-color: RGBA(var(--px_color_border));
+  }
+
+  .MuiSwitch-colorPrimary.Mui-checked {
+    .MuiSwitch-thumb {
+      color: RGB(var(--px_color_primary));
+    }
+
+    &+.MuiSwitch-track {
+      background-color: RGBA(var(--px_color_primary), 1);
+    }
+  }
+}
+
+div.MuiPopover-root {
+  background-color: RGBA(var(--px_color_border), var(--px_alpha_light));
+}
+
+.MuiFormLabel-root {
+  color: RGB(var(--px_color_text_secondary)) !important;
+
+  &.Mui-error {
+    color: RGB(var(--px_color_error_input)) !important;
+  }
+}
+
+.MuiButtonBase-root,
+.MuiButton-root {
+  .MuiButton-label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &.MuiButton-textPrimary {
+    color: RGB(var(--px_color_primary));
+  }
+
+  &.MuiButton-outlined:not(.Mui-disabled),
+  &.MuiButton-outlined:not(.Mui-disabled):hover {
+    border-color: RGB(var(--px_color_primary));
+
+    .MuiButton-label {
+      color: RGB(var(--px_color_primary));
+    }
+  }
+
+  &.MuiButton-containedPrimary,
+  &.MuiButton-containedPrimary:hover {
+    background-color: RGB(var(--px_color_primary));
+  }
+
+  &.MuiIconButton-root:not(.MuiPickersDay-dayDisabled, .MuiPickersDay-daySelected) {
+    color: RGB(var(--px_color_primary));
+  }
+
+  &.MuiPickersDay-daySelected {
+    color: RGB(var(--px_color_text_on_primary));
+    background-color: RGB(var(--px_color_primary));
+  }
+
+  &.MuiIconButton-root:hover {
+    color: RGB(var(--px_color_text_on_primary));
+    background-color: RGBA(var(--px_color_primary), var(--px_alpha_darker));
+  }
+
+  &.MuiPickersDay-dayDisabled {
+    color: RGB(var(--px_color_text_muted));
+  }
+}
+
+.MuiPaper-root.MuiCard-root {
+  background-color: RGB(var(--px_color_background));
+  color: RGB(var(--px_color_text_primary));
+  // &.MuiPaper-elevation1 {
+  //   // box-shadow: 0px 2px 6px 4px RGBA(var(--px_color_border), 0.16),
+  //   //   0px 1px 1px 4px RGBA(var(--px_color_border), 0.14),
+  //   //   0px 1px 3px 2px RGBA(var(--px_color_border), 0.12);
+  //   box-shadow: 0px 2px 1px -1px RGBA(var(--px_color_border), 1),
+  //     0px 1px 1px 0px RGBA(var(--px_color_border), 0.94),
+  //     0px 1px 1px 0px RGBA(var(--px_color_border), 0.92);
+  // }
+}
+
+.MuiPickersCalendarHeader-switchHeader .MuiTypography-root {
+  color: RGB(var(--px_color_text_secondary));
+}
+
+.MuiPickersCalendarHeader-daysHeader .MuiTypography-root {
+  color: RGB(var(--px_color_text_secondary));
+}
+
+.MuiToolbar-root.MuiPickersToolbar-toolbar {
+  color: RGB(var(--px_color_text_on_primary));
+  background-color: RGB(var(--px_color_primary));
+}
+
+.MuiLinearProgress-root {
+  &.MuiLinearProgress-colorPrimary {
+    .MuiLinearProgress-dashedColorPrimary {
+      background-color: RGBA(var(--px_color_primary), var(--px_alpha_lighter));
+    }
+
+    .MuiLinearProgress-bar.MuiLinearProgress-colorPrimary.MuiLinearProgress-bar2Buffer {
+      background-color: RGBA(var(--px_color_primary), var(--px_alpha_muted));
+    }
+
+    .MuiLinearProgress-barColorPrimary {
+      background-color: RGB(var(--px_color_primary));
+    }
+  }
+}
+
+.MuiInputBase-root {
+  &:not(.Mui-disabled) {
+    color: RGB(var(--px_color_text_primary));
+  }
+
+  &.Mui-disabled,
+  &.Mui-disabled .MuiInputAdornment-root {
+    color: RGB(var(--px_color_text_muted));
+  }
+}
+
+.MuiTextField-root {
+  .MuiOutlinedInput-root {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: RGBA(var(--px_color_text_secondary), var(--px_alpha_darker));
+    }
+
+    &.Mui-error .MuiOutlinedInput-notchedOutline {
+      border-color: RGB(var(--px_color_error_input));
+    }
+
+    &.Mui-focused,
+    &.Mui-focused:focus,
+    &.Mui-focused:focus-visible {
+      border-color: RGB(var(--px_color_primary));
+      outline: RGB(var(--px_color_primary));
+    }
+  }
+
+  .MuiFormHelperText-root.Mui-error {
+    color: RGB(var(--px_color_error_input));
+  }
+}
+
+.MuiPaper-root.MuiDialog-paper {
+  background-color: RGB(var(--px_color_background));
+  color: RGB(var(--px_color_text_primary));
+}
+
+div.MuiBackdrop-root {
+  background-color: RGBA(var(--px_color_border), var(--px_alpha_medium));
+}
+
+.MuiBadge-badge.MuiBadge-colorPrimary {
+  background-color: RGB(var(--px_color_primary));
+}
+
+.MuiFormLabel-root {
+  color: RGB(var(--px_color_text_secondary)) !important;
+
+  &.Mui-error {
+    color: RGB(var(--px_color_error_input)) !important;
+  }
+}
+
+.MuiChip-root.px-filter-on {
+  background-color: RGB(var(--px_color_primary));
+  color: RGB(var(--px_color_text_on_primary));
+
+  &:hover {
+    background-color: RGB(var(--px_color_primary)) !important;
+  }
+
+  .MuiSvgIcon-root {
+    color: RGB(var(--px_color_text_on_primary));
+  }
+}
+
+.MuiTabs-root .MuiTabs-indicator {
+  background-color: RGB(var(--px_color_primary));
+}
+
+.MuiFab-root.MuiFab-primary {
+  color: #ffffff;
+  background-color: RGB(var(--px_color_primary));
+
+  &:hover {
+    background-color: RGB(var(--px_color_primary));
+  }
+}
+
+.MuiList-root {
+  background-color: RGB(var(--px_color_surface));
+  color: RGB(var(--px_color_text_secondary));
+}
+
+.MuiRadio-root {
+  &.MuiRadio-colorPrimary.Mui-checked {
+    color: RGB(var(--px_color_primary));
+  }
+}
+
+.MuiCheckbox-root {
+  &.MuiCheckbox-colorPrimary.Mui-checked {
+    color: RGB(var(--px_color_primary));
+  }
+
+  &.MuiCheckbox-colorPrimary.Mui-disabled,
+  &.Mui-disabled input[type='checkbox'] {
+    color: RGBA(var(--px_color_border), var(--px_alpha_muted));
+  }
+}
+
+.MuiSvgIcon-root {
+  &.MuiSvgIcon-colorPrimary {
+    color: RGB(var(--px_color_primary));
+  }
+}
+
+.MuiBadge-badge.MuiBadge-colorPrimary {
+  background-color: RGB(var(--px_color_primary));
+}
+
+.MuiButton-root.px-link-btn,
+.MuiButton-root.px-link-btn span {
+  color: RGB(var(--px_color_primary)) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.MuiButton-root.px-link-btn:hover,
+.MuiButton-root.px-link-btn:hover {
+  color: RGB(var(--px_color_primary)) !important;
+  background-color: RGBA(var(--px_color_primary), var(--px_alpha_lighter)) !important;
+}
+
+.MuiTable-root .MuiTableCell-body {
+  color: RGB(var(--px_color_text_primary));
+}
+
+.MuiSnackbar-root {
+  .MuiAlert-root {
+    color: RGB(var(--px_color_text_on_snackbar));
+
+    &.MuiAlert-filledInfo {
+      background-color: RGB(var(--px_color_info));
+    }
+
+    &.MuiAlert-filledError {
+      background-color: RGB(var(--px_color_error));
+    }
+
+    &.MuiAlert-filledSuccess {
+      background-color: RGB(var(--px_color_success));
+    }
+
+    &.MuiAlert-filledWarning {
+      background-color: RGB(var(--px_color_warning));
+    }
+
+    .MuiAlert-icon .MuiSvgIcon-root,
+    .MuiAlert-message,
+    .MuiAlert-action .MuiSvgIcon-root,
+    .MuiButton-root {
+      color: RGB(var(--px_color_text_on_snackbar));
+    }
+  }
+
+  .MuiDropzoneSnackbar-successAlert {
+    background-color: RGB(var(--px_color_success));
+  }
+
+  .MuiDropzoneSnackbar-infoAlert {
+    background-color: RGB(var(--px_color_info));
+  }
+
+  .MuiSvgIcon-root.MuiDropzoneSnackbar-icon {
+    color: RGB(var(--px_color_text_on_snackbar));
+  }
+}

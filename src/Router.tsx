@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppMenu from "./components/AppMenu/AppMenu";
 const Login = lazy(() => import("./views/Login/Login"));
+const Contact = lazy(() => import("./views/Contact/Contact"));
 const App = lazy(() => import("./views/Home/Home"));
 
 const routes = [
@@ -17,6 +18,10 @@ const routes = [
     path: "/dashboard",
     protected: true,
     element: App,
+  },
+  {
+    path: "/contact",
+    element: Contact,
   },
 ];
 
