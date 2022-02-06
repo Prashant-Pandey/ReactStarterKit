@@ -1,24 +1,27 @@
 import { Paper } from "@material-ui/core";
 import { Formik } from "formik";
-import {
-  PrimaryButton,
-  TextField,
-} from "../../components/AtomComponents";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { PrimaryButton, TextField } from "../../components/AtomComponents";
+import { login } from "../../redux/actions/loginActions";
 import { loginFormValidation } from "../../utils/dataValidation";
-import "./Login.scss"
+import "./Login.scss";
 function Login(props: any) {
+  const navigator = useNavigate();
+  const dispatch = useDispatch()
+  const submitLoginForm = (values: { email: string; password: string }) => {
+    console.log(values);
+    // success email/password
+    dispatch(login("login"));
+    navigator("/dashboard");
+  };
   return (
     <div id="app-login-page">
       <Paper>
         <Formik
           initialValues={{ email: "", password: "" }}
           validate={loginFormValidation}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
-          }}
+          onSubmit={submitLoginForm}
         >
           {({
             values,

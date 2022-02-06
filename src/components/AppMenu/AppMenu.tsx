@@ -23,6 +23,9 @@ export default function AppMenu() {
           <Link to="/contact">Contact</Link>
         </Typography>
         <Typography>
+          <Link to="/dashboard">Dashboard</Link>
+        </Typography>
+        <Typography>
           <Link to="/login">Login</Link>
         </Typography>
         <PrimaryIconButton
