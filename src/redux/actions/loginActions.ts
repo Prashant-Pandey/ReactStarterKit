@@ -1,3 +1,6 @@
-import { LOGIN } from "./actionTypes";
+import { LOGIN, LOGOUT, UNAUTHORIZED_ACCESS } from "./actionTypes";
 
-export const login = (loginState: "login" | "logout" | "signup") => ({type: LOGIN, payload: loginState})
+export const login = () => ({ type: LOGIN });
+export const logout = () => ({ type: LOGOUT });
+
+export const unauthorizedAccess = () => ({ type: UNAUTHORIZED_ACCESS });

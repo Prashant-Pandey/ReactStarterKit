@@ -13,9 +13,11 @@ function Login(props: any) {
   const dispatch = useDispatch();
   
   const submitLoginForm = (values: { email: string; password: string }) => {
+    localStorage.setItem('email', values.email)
+    localStorage.setItem('password', values.password)
     // success email/password
     dispatch(showSuccessMessage("Login Successful"));
-    dispatch(login("login"));
+    dispatch(login());
     navigator("/dashboard");
   };
 

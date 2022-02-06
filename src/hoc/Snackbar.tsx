@@ -1,27 +1,42 @@
 import { Alert } from "@material-ui/lab";
 import { Snackbar as MuiSnackbar } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import { hideMessage } from "../redux/actions/messageActions";
 import { IMessagePayload } from "../redux/reducer/messageReducer";
+import { useEffect, useState } from "react";
 
-const Snackbar = () => {
-  const snackbarState: IMessagePayload = useSelector(
-    (state: any) => state.messageState
-  );
-  console.log("snackbar rendered", snackbarState);
-  const dispatch = useDispatch();
+interface ISnackbarProps {
+  snackbarState: IMessagePayload;
+  dispatch: any;
+}
+
+const Snackbar = ({ snackbarState, dispatch }: ISnackbarProps) => {
+  const [snackbar, setSnackbar] = useState<IMessagePayload>();
+  useEffect(() => {
+    if (snackbar?.show !== snackbarState.show) setSnackbar(snackbarState);
+  }, [snackbar, snackbarState]);
   const handleClose = () => dispatch(hideMessage());
   return (
     <MuiSnackbar
-      open={snackbarState.show}
-      anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+      open={!!snackbar?.show}
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
       autoHideDuration={6000}
       onClose={handleClose}
     >
-      <Alert onClose={handleClose} variant="filled" severity={snackbarState.type}>
-          {snackbarState.message}
+      <Alert
+        onClose={handleClose}
+        variant="filled"
+        severity={snackbar?.type || "error"}
+      >
+        {snackbar?.message || ""}
       </Alert>
     </MuiSnackbar>
   );
 };
-export default Snackbar;
+
+const mapStateToProps = (state: any) => {
+  return {
+    snackbarState: state.messageState,
+  };
+};
+export default connect(mapStateToProps)(Snackbar);

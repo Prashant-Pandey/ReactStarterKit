@@ -1,0 +1,1 @@
+export const unauthorizedAccessMsg = "Unauthorized, Please Login";
