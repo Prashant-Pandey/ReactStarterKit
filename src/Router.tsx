@@ -1,12 +1,15 @@
-import { lazy, LazyExoticComponent, Suspense, useEffect, useState } from "react";
+import {
+  lazy,
+  LazyExoticComponent,
+  Suspense,
+  useEffect,
+  useState,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppMenu from "./components/AppMenu/AppMenu";
 import Snackbar from "./hoc/Snackbar";
-import {
-  login,
-  unauthorizedAccess,
-} from "./redux/actions/loginActions";
+import { login, unauthorizedAccess } from "./redux/actions/loginActions";
 const Login = lazy(() => import("./views/Login/Login"));
 const Contact = lazy(() => import("./views/Contact/Contact"));
 const Home = lazy(() => import("./views/Home/Home"));
@@ -48,22 +51,16 @@ const verifyUser = () => {
   const password = localStorage.getItem("password");
   return !!email && !!password;
 };
-let routAppCnt = 0;
-const RouteApp = (params: IRouteObject) => {
-  routAppCnt++;
-  console.log("route app", routAppCnt);
 
+const RouteApp = (params: IRouteObject) => {
   const loginState = useSelector((state: any) => state.loginState);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const isUserLoggedIn = verifyUser();
-    if (loginState?.login !== "login" && isUserLoggedIn) dispatch(login());
-    if (!!params.protected && loginState?.login !== "login" && !isUserLoggedIn)
+    if (!!params.protected && loginState?.login !== "login")
       dispatch(unauthorizedAccess());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   if (params.protected && loginState?.login !== "login")
     return <Navigate to="/login" />;
@@ -71,21 +68,17 @@ const RouteApp = (params: IRouteObject) => {
   return <App />;
 };
 
-let renderCount = 0;
-
 export const Router = () => {
-  renderCount++;
-  console.log(renderCount, "Router Rendered times");
-  const [isLoaded, setIsLoaded]  = useState<boolean>(false);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const dispatch = useDispatch();
-  useEffect(()=>{
-    if(verifyUser()) dispatch(login());
-    setIsLoaded(true)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  if(!isLoaded) return <div>Loading...</div>
+  useEffect(() => {
+    if (verifyUser()) dispatch(login());
+    setIsLoaded(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <BrowserRouter>
+      {!isLoaded && <div>Loading...</div>}
       <Suspense fallback={<>Loading...</>}>
         <AppMenu />
         <Snackbar />
