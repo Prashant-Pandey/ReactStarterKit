@@ -5,19 +5,24 @@ import { useNavigate } from "react-router-dom";
 import { PrimaryButton, TextField } from "../../components/AtomComponents";
 import { login } from "../../redux/actions/loginActions";
 import { loginFormValidation } from "../../utils/dataValidation";
+import logo from "../../images/logo.svg";
 import "./Login.scss";
+import { showSuccessMessage } from "../../redux/actions/messageActions";
 function Login(props: any) {
   const navigator = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  
   const submitLoginForm = (values: { email: string; password: string }) => {
-    console.log(values);
     // success email/password
+    dispatch(showSuccessMessage("Login Successful"));
     dispatch(login("login"));
     navigator("/dashboard");
   };
+
   return (
     <div id="app-login-page">
       <Paper>
+        <img src={logo} alt="App Logo" className="app-logo" />
         <Formik
           initialValues={{ email: "", password: "" }}
           validate={loginFormValidation}

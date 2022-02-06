@@ -1,7 +1,8 @@
-import { ExoticComponent, lazy, LazyExoticComponent, Suspense } from "react";
+import { lazy, LazyExoticComponent, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppMenu from "./components/AppMenu/AppMenu";
+import Snackbar from "./hoc/Snackbar";
 const Login = lazy(() => import("./views/Login/Login"));
 const Contact = lazy(() => import("./views/Contact/Contact"));
 const Home = lazy(() => import("./views/Home/Home"));
@@ -35,7 +36,6 @@ const routes: Array<IRouteObject> = [
 
 const RouteApp = (params: IRouteObject) => {
   const loginState = useSelector((state: any) => state.loginState);
-  console.log(loginState);
   if (params.protected && loginState.login !== "login")
     return <Navigate to="/login" />;
   const App = params.element;
@@ -51,6 +51,7 @@ export const Router = () => {
     <BrowserRouter>
       <Suspense fallback={<>Loading...</>}>
         <AppMenu />
+        <Snackbar />
         <Routes>
           {routes
             .filter((val) => !!val.element && val.path)

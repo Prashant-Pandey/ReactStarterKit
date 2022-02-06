@@ -16,4 +16,14 @@
             max-width: 500px;
         }
     }
+
+    .MuiPaper-root{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .app-logo{
+        height: 120px;
+    }
 }

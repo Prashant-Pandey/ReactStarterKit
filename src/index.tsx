@@ -4,7 +4,7 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { Router } from "./Router";
-import ErrorBoundary from "./ErrorBoundary";
+import ErrorBoundary from "./hoc/ErrorBoundary";
 import "./index.scss";
 
 ReactDOM.render(
