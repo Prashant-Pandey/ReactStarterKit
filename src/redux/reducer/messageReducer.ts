@@ -1,12 +1,12 @@
-import { unauthorizedAccessMsg } from "../../utils/constants";
-import { HIDE_MESSAGE, SHOW_MESSAGE, UNAUTHORIZED_ACCESS } from "../actions/actionTypes";
+import { loginSuccesssMsg, unauthorizedAccessMsg } from "../../utils/constants";
+import { HIDE_MESSAGE, LOGIN, SHOW_MESSAGE, UNAUTHORIZED_ACCESS } from "../actions/actionTypes";
 export interface IMessagePayload {
   type: "error" | "success";
   message: string;
   show: boolean;
 }
 export interface IMessageAction {
-  type: typeof SHOW_MESSAGE | typeof HIDE_MESSAGE | typeof UNAUTHORIZED_ACCESS;
+  type: typeof SHOW_MESSAGE | typeof HIDE_MESSAGE | typeof UNAUTHORIZED_ACCESS | typeof LOGIN;
   payload: IMessagePayload;
 }
 
@@ -31,6 +31,11 @@ export default function messageReducer(state: any = {}, msgAction: any) {
     case UNAUTHORIZED_ACCESS:
         updatedState.message = unauthorizedAccessMsg;
         updatedState.type = "error";
+        updatedState.show = true;
+        break;
+      case LOGIN:
+        updatedState.message = loginSuccesssMsg;
+        updatedState.type = "success";
         updatedState.show = true;
         break;
   }

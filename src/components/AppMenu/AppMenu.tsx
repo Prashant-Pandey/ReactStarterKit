@@ -2,9 +2,8 @@ import { Avatar, Menu, MenuItem, Typography } from "@material-ui/core";
 import "./AppMenu.scss";
 import * as React from "react";
 import { PrimaryIconButton } from "../AtomComponents";
-import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../../redux/actions/loginActions";
-import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const menuOptions = [
   {
@@ -31,6 +30,7 @@ const menuOptions = [
     label: "Login",
     link: "/login",
     loginRequired: false,
+    hideOnLogin: true,
   },
 ];
 
@@ -47,6 +47,7 @@ export default function AppMenu() {
       <div className="app-menu">
         {menuOptions.map((menuOption) => {
           if (menuOption.loginRequired && !isUserLoggedIn) return null;
+          if (menuOption.hideOnLogin && isUserLoggedIn) return null;
           return (
             <Typography key={menuOption.link}>
               <Link

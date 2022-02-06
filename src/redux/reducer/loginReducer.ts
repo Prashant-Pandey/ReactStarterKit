@@ -7,7 +7,7 @@ export default function loginReducer(
   const updatedState: any = { ...state };
   switch (action.type) {
     case types.LOGIN:
-      updatedState.login = "login"
+      updatedState.login = "login";
       break;
     case types.LOGOUT:
       updatedState.login = "logout";
@@ -18,6 +18,8 @@ export default function loginReducer(
       localStorage.clear();
       break;
     default:
+      console.log(`loginReducer:`, action, state);
+
       if (!Object.keys(state).length) return null;
       break;
   }

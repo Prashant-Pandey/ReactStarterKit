@@ -7,7 +7,6 @@ import { login } from "../../redux/actions/loginActions";
 import { loginFormValidation } from "../../utils/dataValidation";
 import logo from "../../images/logo.svg";
 import "./Login.scss";
-import { showSuccessMessage } from "../../redux/actions/messageActions";
 function Login(props: any) {
   const navigator = useNavigate();
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ function Login(props: any) {
     localStorage.setItem('email', values.email)
     localStorage.setItem('password', values.password)
     // success email/password
-    dispatch(showSuccessMessage("Login Successful"));
     dispatch(login());
     navigator("/dashboard");
   };
