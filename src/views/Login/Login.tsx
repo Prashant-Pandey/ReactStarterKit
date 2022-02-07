@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { PrimaryButton, TextField } from "../../components/AtomComponents";
-import { login } from "../../redux/actions/loginActions";
+import { login } from "@redux/actions/loginActions";
 import { loginFormValidation } from "../../utils/dataValidation";
 import logo from "../../images/logo.svg";
 import "./Login.scss";

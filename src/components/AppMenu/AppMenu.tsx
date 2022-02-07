@@ -1,7 +1,7 @@
 import { Avatar, Menu, MenuItem, Typography } from "@material-ui/core";
 import "./AppMenu.scss";
 import * as React from "react";
-import { PrimaryIconButton } from "../AtomComponents";
+import { PrimarySwitch } from "../AtomComponents";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -38,9 +38,16 @@ export default function AppMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const loginState = useSelector((state: any) => state.loginState);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) =>
-    setAnchorEl(event.currentTarget);
+  // const handleClick = (event: React.MouseEvent<HTMLElement>) =>
+  //   setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
+  const switchTheme = (e:React.ChangeEvent) => {
+    // if (loginState.theme === "light") {
+    //   loginState.theme = "dark";
+    // } else {
+    //   loginState.theme = "light";
+    // }                                    
+  }
   const isUserLoggedIn = loginState?.login === "login";
   return (
     <>
@@ -60,7 +67,8 @@ export default function AppMenu() {
             </Typography>
           );
         })}
-        <PrimaryIconButton
+        <PrimarySwitch onChange={switchTheme} />
+        {/* <PrimaryIconButton
           onClick={handleClick}
           size="small"
           aria-controls={open ? "account-menu" : undefined}
@@ -68,7 +76,7 @@ export default function AppMenu() {
           aria-expanded={open ? "true" : undefined}
         >
           <Avatar>M</Avatar>
-        </PrimaryIconButton>
+        </PrimaryIconButton> */}
       </div>
       <Menu
         anchorEl={anchorEl}
