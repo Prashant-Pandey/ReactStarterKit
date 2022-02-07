@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppMenu from "./components/AppMenu/AppMenu";
+import PageLoading from "./components/AtomComponents/PageLoading";
 import Snackbar from "./hoc/Snackbar";
 import { login, unauthorizedAccess } from "./redux/actions/loginActions";
 const Login = lazy(() => import("./views/Login/Login"));
@@ -76,10 +77,10 @@ export const Router = () => {
     setIsLoaded(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  if (!isLoaded) return <PageLoading />;
   return (
     <BrowserRouter>
-      {!isLoaded && <div>Loading...</div>}
-      <Suspense fallback={<>Loading...</>}>
+      <Suspense fallback={<PageLoading />}>
         <AppMenu />
         <Snackbar />
         <Routes>
